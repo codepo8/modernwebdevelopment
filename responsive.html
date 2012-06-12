@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Responsiveness with MediaQueries</title>
+  <meta type="description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <style>
+    * { 
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-size: 15px;
+      font-family: "Open Sans", helvetica, arial, sans-serif;
+    }
+    footer, section, header, aside, figure {
+      display: block;
+    }
+    @media only screen and (max-width: 1024px) {
+      body{
+        background: yellow;
+      }
+    }
+    @media only screen and (max-width: 780px) {
+      body{
+        background: blue;
+      }
+    }
+    @media only screen and (max-width: 480px) {
+      body{
+        background: red;
+      }
+    }
+    @media only screen and (orientation: landscape) {
+      body::after {
+        content: 'landscape';
+        font-size: 80px;
+      }
+    }
+    @media only screen and (orientation: portrait) {
+      body::after {
+        content: 'portrait';
+        font-size: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+</body>
+</html>

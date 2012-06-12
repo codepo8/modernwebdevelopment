@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Context Menu Demos</title>
+  <meta name="description" content="How to use detect support, hint availability and make context menus dynamic.">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<style>
+  *{margin:0;padding:0;}
+  body{
+    font-size:15px;
+    font-family:georgia,arial,sans-serif;
+    color: #333;
+    background: #f8f8f8;
+  }
+  footer,section,header{display:block;}
+  p {padding: 10px 20px 5px 20px;}
+  a{color:#999;}
+  footer p{text-align:right;font-size:12px;}
+  h2 {
+    font-size:20px;
+    margin: 10px 20px;
+  }
+  header h1{
+    font-size: 32px;
+    color: #369;
+    margin: 10px 20px;
+  }
+  p.demo {
+    margin: 1em;
+    border: 1px solid #999;
+    background: #ccc;
+    border-radius: 5px;
+    padding: 10px 20px;
+  }
+  .contextmenu #menudemo, .contextmenu .demo {
+    cursor: context-menu;
+  }
+  
+  #counter{
+    position: absolute;
+    background: rgba(0,0,0,0.7);
+    padding:.5em 1em;
+    color: #fff;
+    font-weight:bold;
+    border-radius: 5px;
+    -moz-transition: opacity 0.4s;
+  }
+  #counter.hide{
+    opacity: 0;
+  }
+  
+  #menudemo { -moz-transition: 0.2s; width:200px;}
+  #menudemo.rotate { -moz-transform: rotate(90deg); }
+  #menudemo.resize { -moz-transform: scale(0.7); }
+  #menudemo.resize.rotate { -moz-transform: scale(0.7) rotate(90deg); }
+</style>
+</head>
+<body>
+  <header><h1>Context menu demos</h1></header>
+  
+  
+  <section id="noninteractive" contextmenu="imagemenu">
+    <header>
+      <h2>Several menus example </h2>
+    </header>
+    
+    <p>Right-click the image to rotate and resize</p>
+    
+    <img src="html5.png" alt="HTML5" id="menudemo">
+      
+      <menu type="context" id="imagemenu">
+        <menuitem label="rotate" onclick="rotate()"
+                  icon="rotate.png">
+        </menuitem>
+        <menuitem label="resize" onclick="resize()"
+                  icon="resize.png">
+        </menuitem>
+        <menu label="share">
+          <menuitem label="twitter" onclick="alert('not yet')"></menuitem>
+          <menuitem label="facebook" onclick="alert('not yet')"></menuitem>
+        </menu>
+      </menu>
+
+  </section>
+
+  <section id="noninteractive" contextmenu="countmenu">
+
+    <header>
+      <h2>Non-interactive context menu</h2>
+    </header>
+    
+    <p>Right-click anywhere in here to see context menu</p>
+
+    <menu type="context" id="countmenu">
+        <menuitem class="wordcount" label="count words"></menuitem>
+    </menu>
+
+    <p class="demo">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </section>
+  
+  <section id="interactive" contextmenu="countmenuinteractive">
+
+    <header>
+      <h2>Interactive context menu</h2>
+    </header>
+
+    <p>Right-click anywhere in here to see context menu - 
+       if you have nothing selected, the "count words" menu is not active.</p>
+
+    <menu type="context" id="countmenuinteractive">
+        <menuitem class="wordcount" label="count words"></menuitem>
+    </menu>
+    
+    <p class="demo">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </section>
+
+<footer>
+  <p>Written by 
+    <a href="http://twitter.com/codepo8">Chris Heilmann</a> and 
+    <a href="@paulrouget">Paul Rouget</a>
+  </p>
+</footer>
+<script>
+(function(){
+
+  if ('contextMenu' in document.body && 'HTMLMenuItemElement' in window) {
+    document.documentElement.classList.add('contextmenu');
+  } else {
+    return;
+  }
+
+  var counter = document.createElement('span');
+  counter.id = 'counter';
+  counter.className = 'hide';
+  document.body.appendChild(counter);
+
+  counter.addEventListener('click', function(ev){
+    this.className = 'hide';
+  },false);
+
+  var wordcountmenus = document.querySelectorAll('.wordcount'),
+      i = wordcountmenus.length;
+
+  while (i--) {
+    wordcountmenus[i].addEventListener('click', function(ev) {
+      var text = document.getSelection(),
+          count = text.toString().split(/\s/).length;
+      counter.innerHTML = count + ' words';
+      counter.className = '';
+    }, false);
+  }
+
+  document.body.addEventListener(
+    'contextmenu', function(ev) {
+      counter.style.left = ev.pageX + 'px';
+      counter.style.top = ev.pageY + 'px';
+      counter.className = 'hide';
+    }, 
+  false);
+
+  document.querySelector('#interactive').addEventListener(
+    'contextmenu', function(ev) {
+      this.querySelector('.wordcount').disabled =
+      document.getSelection().isCollapsed;  
+    },
+  false);
+
+}());
+function rotate() {
+  document.querySelector('#menudemo').classList.toggle('rotate'); 
+}
+function resize() {   
+  document.querySelector('#menudemo').classList.toggle('resize'); 
+}
+</script>
+</body>
+</html>

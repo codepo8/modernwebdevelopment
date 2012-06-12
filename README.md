@@ -1,0 +1,146 @@
+# Modern Web Development
+
+This is a presentation on "modern web development", specifically the 
+differences between progressive enhancement and graceful degradation but 
+also explaining how to deal with legacy browsers and touching on responsive 
+design.
+
+You can find the slides here:
+
+Modern Web Development-notes.pdf - Annotated version 
+Modern Web Development.pdf - Plain version
+Modern Web Development.key.zip - Keynote file (with notes)
+Modern Web Development.ppt - Powerpoint file (with notes)
+
+The font uses is Open Sans available from Google - in case Powerpoint 
+doesn't show it properly. 
+
+In the presentation you'll find "demo time" slides followed by "Memo time"
+slides repeating what we just learned. These mean you should show demo code
+in between, which is available here:
+
+## HTML5 magic built-in Demo time:
+
+magic.html - show that this file displays as a heading in the browser. Then 
+             open the browser developer tools and show that the browser 
+             automatically added a html, head and body element, the latter 
+             around the h1 element. Explain that this is what HTML5 browsers 
+             do - they have been built around the robustness principle that 
+             end users should not suffer from developer mistakes and will 
+             inject necessary elements for you. Also explain that this is a 
+             safety precaution to make sure that bad old code on the web will
+             still display in newer browsers and should not be used as an 
+             excuse not to write these elements. Instead we should write code 
+             that is valid and has all the elements to tell the browser what
+             to do _and_ make things easy to understand for the next person 
+             who works with your code. 
+form.html - this is a simple form example showing that by adding a required
+            attribute you can stop forms with erroneous fields to be sent to
+            the server. Explain that this is not a replacement for
+            validation on the server (as relying on client-side 
+            validation means attackers could just directly call the script 
+            in the action of your form). Explain that this means that in HTML5    
+            we don't need to write our own client-side validation as it comes 
+            built-in. The other benefit of this approach is that the 
+            validation rules are defined in the HTML (as seen at the age
+            field) which means they don't get out of sync easily. As a bonus, 
+            also explain that the labels in the form are very much needed 
+            for accessibility.
+
+            HTML5 magic built-in Demo time:
+
+## Progressive Enhancement vs. Graceful Degradation Demo time:
+
+gradients.html - an example of progressive enhancement. Instead of just using 
+                 the -webkit- or -moz- prefixes for the gradient background 
+                 show that we define a green background first, which ensures 
+                 that browsers without gradients don't show a white button 
+                 with white text. Adding all the other browser prefixes both 
+                 makes sure that browsers with support get the gradient and 
+                 that browsers who haven't got it yet will apply it when it 
+                 works in them. Having a prefix-less gradient as the last 
+                 option ensures that we don't need to change our code once 
+                 the prefixes have been dropped by browsers.
+cafevintage/ - This is an example of progressive enhancement using quite a 
+               few of the new features in browsers on top of a very simple 
+               HTML document. This was actually part of the Smashing Book #3 
+               (https://shop.smashingmagazine.com/smashing-book-3.html). 
+               There are a few things you can show here. Show how the page
+               performs now - clicking the navigation links and seeing the 
+               animations. 
+               Show that we test for all the things we use before we apply 
+               the JavaScript in the first if statement. 
+               Then either open it in an old browser (IE 8 should
+               do) or break one of the tests in the first if statement (for 
+               example remove the c from classList) and show that the page 
+               still very much works - all the buttons make the page scroll
+               to the right section - it just doesn't animate and move in 
+               which is totally fine. 
+               Explain that we use new features that make a lot of sense - 
+               instead of animating with jQuery we add and remove classes 
+               from elements using classList and we do the animations in 
+               CSS which means they are hardware accelerated. 
+               A very important part to show here is that we piggy-back on 
+               very basic browser and HTML functionality - linking anchors to 
+               targets in the page which even makes the state of the page 
+               bookmarkable. We use something that works in all browsers and 
+               re-use it in our selectors instead of having to loop through 
+               all the articles and create a connection between the buttons 
+               and the articles that way. 
+               This is a good example to show that bells and whistles are OK 
+               to leave to the CSS and only apply them when they can be 
+               executed without overhead.
+contextmenu/ - A lesser known feature of HTML5 is menus and toolbars which 
+               are incredibly useful for app development. Firefox to date is 
+               the only browser supporting them. Open index.html in Firefox 
+               and show that the HTML5 logo has a right-click menu that 
+               allows you to turn and zoom the logo. also show the contextual 
+               examples (highlight text and right-click the grey paragraphs 
+               to show the amount of words in the highlighted text. The 
+               second example will grey out the "count words" of the context 
+               menu until you highlight text making it conditional). 
+               Now explain that there are several ways to make this also 
+               work for other browsers. You can use a polyfill like Addy 
+               Osmani's jQuery ContextMenu:
+               http://addyosmani.github.com/jQuery-contextMenu/demo.html 
+               Or you could write an own implementation. As the functionality 
+               here is very simple a fallback HTML list with two buttons 
+               does the trick. 
+               Show graceful-degradation.html and show that in Firefox you 
+               now have the right-click menu and buttons below that do the 
+               same. If you show progressive-enhancement.html you only have 
+               the right-click menu. In other browsers all you ever will 
+               get is the buttons in both cases.
+               Point out that progressive-enhancement.html creates a menu 
+               from the list when and if the browser supports context menus 
+               and thus looks more complex but also point out that to 
+               maintain it all you need to do is to change the original 
+               HTML and the context menu will reflect the changes. In the 
+               graceful-degradation.html example you'll have to maintain 
+               changes in both cases. This is one of the main differences 
+               between the two - with progressive enhancement you need to 
+               put more planning and work in upfront and you will make it 
+               much easier for the maintainer. In the case of graceful
+               degradation you create two construction sites that need 
+               maintaining. This is why products using graceful degradation 
+               are much more likely to get out of sync.
+
+## Responsive design demos demo time:
+
+responsive.html - Open the file in a few browsers and resize the browser 
+                  window. You'll see that the background colour changes from 
+                  yellow to blue to red and the text landscape changes to 
+                  portrait when the window is higher than wide. Show the CSS
+                  in the file and play with the numbers or add another 
+                  colour stop to show how easy this is. 
+                  If you show this on Firefox make sure to show off the 
+                  responsive mode Tools > Web Developer > Responsive Mode as
+                  it allows you to resize the page in the browser without 
+                  having to change the size of the window. 
+                  Go to http://mediaqueri.es and show some of the responsive 
+                  pages there.
+
+If you present this somewhere, why not tell me about it? All of this here 
+is licensed with creative commons BY-SA. Go nuts! 
+
+Chris

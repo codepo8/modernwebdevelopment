@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vintage Cafe - 88 Mountgrove Road, London N5 2LT, England</title>
+  <meta type="description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<style>
+  @font-face {
+    font-family: 'supa';
+    src: url(supafly_36.ttf);
+  }
+  * { 
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-size: 15px;
+    font-family: courier, helvetica, arial, sans-serif;
+    background: url(back.jpg);
+    padding: 10px;
+  }
+  h1 {
+    font-family: supa;
+    font-size: 50px;
+    padding-bottom: 10px;
+    color: rgb(40, 86, 101);
+    font-weight: normal;
+  }
+  footer, section, header, aside, figure {
+    display: block;
+  }
+  header, section, aside, footer {
+    width: 700px;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+    background: rgba(255,255,255,0.7);
+  }
+  section {
+    overflow: hidden;
+    min-height: 340px;
+  }
+  header {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+  }
+  footer {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  nav {
+    position: absolute; 
+    overflow: hidden;
+    top: 20px;
+    right: 20px;
+    padding: 10px 0;
+  }
+  ol li{
+    list-style: none;
+    padding-bottom: 5px;
+  }
+  nav li {
+    display: inline;
+    list-style: none;
+  }
+  nav li a {
+    background: rgb(109,154,173);
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    -webkit-transition: 0.8s;
+       -moz-transition: 0.8s;
+        -ms-transition: 0.8s;
+         -o-transition: 0.8s;
+            transition: 0.8s;
+  }
+  nav li a:hover, nav li a.current {
+    background: rgb(40, 86, 101);
+  }
+  article {
+    position: relative;
+    height: 350px;
+  }
+  body.js article { 
+    width: 700px;
+    position: absolute;
+    top: -700px;
+    -webkit-transition: 0.8s;
+       -moz-transition: 0.8s;
+        -ms-transition: 0.8s;
+         -o-transition: 0.8s;
+            transition: 0.8s;
+  }
+  body.js article.current { 
+    position: absolute;
+    top: 0;
+  }
+  article h1 {
+    font-size: 30px;
+    color: #666;
+  }
+  article img {
+    width: 300px;
+    float: left;
+    padding-right: 10px;
+  }
+  article p {
+    position: absolute;
+    left: 320px;
+    width: 370px;
+  }
+  .js article p {
+    left: 900px;
+    opacity: 0;
+    -webkit-transition: 1s ease 0.7s;
+       -moz-transition: 1s ease 0.7s;
+        -ms-transition: 1s ease 0.7s;
+         -o-transition: 1s ease 0.7s;
+            transition: 1s ease 0.7s;
+  }
+  .js article.current p {
+    position: absolute;
+    left: 320px;
+    width: 370px;
+    opacity: 1;
+  }
+  aside p {
+    font-weight: bold;
+    color: rgb(40, 86, 101);
+    padding-bottom: 5px;
+  }
+  footer {
+    font-size: 12px;
+    color: #666;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+  <header>
+
+    <h1>Cafe Vintage</h1>
+    <p>88 Mountgrove Road, London N5 2LT, England</p>
+    
+    <nav>
+      <ul>
+        <li><a href="#cafe">The Cafe</a></li>
+        <li><a href="#fashion">Fashion</a></li>
+        <li><a href="#food">Food</a></li>
+        <li><a href="#gifts">Gifts</a></li>
+      </ul>
+    </nav>
+
+  </header>
+  <section>
+    <article id="cafe">
+      <h1>The Cafe</h1>
+      <figure><img src="cafe-vintage-outer.jpg" width="300" alt="Cafe Vintage Outer"></figure>
+      <p>Cafe Vintage was started in late November 2010 by sisters Aysha and Nadia Allman. It was an opportunity to combine their shared love of fashion and baking and share what they had to offer with as many people as possible.</p>
+    </article>
+    <article id="fashion">
+      <h1>Fashion</h1>
+      <figure><img src="fashion.jpg" alt="Fashion"></figure>
+      <p>We have a constantly changing range of clothing for kids, men and women. From hats to coats, from tiaras to sweaters, from shoes to skirts - if it is vintage, you'll find it here.</p>
+    </article>
+    <article id="food">
+      <h1>Food</h1>
+      <figure><img src="food.jpg" alt="Food"></figure>
+      <p>All the food served in vintage cafe is freshly made and prepared on the spot. From cakes and cookies over sandwiches up to soups and pies - we have it and you are happy to come and try it out. Coffee, drinks and tea are also available. We also sell artisan bread for you to take home.</p>
+    </article>
+    <article id="gifts">
+      <h1>Gifts</h1>
+      <figure><img src="gifts.jpg" alt="Gifts"></figure>
+      <p>Looking for a special gift with a vintage touch? Look no further. From postcards to crockery - we have you sorted.</p>
+    </article>
+  </section>
+  <aside>
+    <p>Opening hours:</p> 
+    <ol>
+      <li>(Closed Monday)</li>
+      <li>Tuesday to Friday 8.30am - 5.30pm</li>
+      <li>Saturday 9am - 5pm</li>
+      <li>Sunday 10 - 4pm</li>
+    </ol>
+  </aside>
+<footer>
+  <p>&copy; 2012 Cafe Vintage and Chris Heilmann</p>
+</footer>
+<script>
+if (document.body.classList && document.querySelector &&
+    document.body.addEventListener) {
+
+  document.body.classList.add( 'js' );
+
+  var nav = document.querySelector( 'nav' ),
+      article = document.querySelector( 'article' ),
+      link = document.querySelector( 'nav a' );
+
+  if ( document.location.hash ) {
+    var cleanhash =  document.location.hash.replace( /^#/, '' );
+    article = document.querySelector( document.location.hash );
+    link = document.querySelector( 'nav a[href$=' + cleanhash + ']' );
+  }
+
+  link.classList.add( 'current' );
+  article.classList.add( 'current' );
+
+  nav.addEventListener( 'click', function( ev ) {
+    var t = ev.target;
+    if ( t.tagName === 'A' ) {
+      article.classList.remove( 'current' );
+      link.classList.remove( 'current' );
+      article = document.querySelector( t.getAttribute( 'href' ) );
+      link = t;
+      article.classList.add( 'current' );
+      link.classList.add( 'current' );
+    }
+  }, false);
+  
+}
+</script>
+</body>
+</html>

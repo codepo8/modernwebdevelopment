@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Graceful degradation</title>
+  <link rel="stylesheet" href="style/styles.css">
+<style>
+  #menudemo {
+    cursor: context-menu;
+  }
+  
+  #menudemo { 
+    width: 200px;
+    -webkit-transition: 0.2s; 
+       -moz-transition: 0.2s; 
+        -ms-transition: 0.2s; 
+         -o-transition: 0.2s; 
+            transition: 0.2s; 
+  }
+  #menudemo.rotate { 
+    -webkit-transform: rotate(90deg); 
+       -moz-transform: rotate(90deg); 
+        -ms-transform: rotate(90deg); 
+         -o-transform: rotate(90deg); 
+            transform: rotate(90deg); 
+  }
+  #menudemo.resize { 
+    -webkit-transform: scale(0.7); 
+       -moz-transform: scale(0.7); 
+        -ms-transform: scale(0.7); 
+         -o-transform: scale(0.7); 
+            transform: scale(0.7); 
+  }
+  #menudemo.resize.rotate { 
+    -webkit-transform: scale(0.7) rotate(90deg); 
+       -moz-transform: scale(0.7) rotate(90deg); 
+        -ms-transform: scale(0.7) rotate(90deg); 
+         -o-transform: scale(0.7) rotate(90deg); 
+            transform: scale(0.7) rotate(90deg); 
+  }
+</style>
+</head>
+<body>
+<section>
+  
+  <img src="html5.png" alt="HTML5" id="menudemo" contextmenu="imagemenu">
+
+  <menu type="context" id="imagemenu">
+    <menuitem label="rotate" onclick="rotate()"
+              icon="arrow_rotate_clockwise.png">
+    </menuitem>
+    <menuitem label="resize" onclick="resize()"
+              icon="image-resize.png">
+    </menuitem>
+  </menu>
+
+  <ul id="imagemenu">
+    <li>
+      <button onclick="rotate()"><img src="rotate.png" alt=""> rotate</button>
+    </li>
+    <li>
+      <button onclick="resize()"><img src="resize.png" alt=""> resize</button>
+    </li>
+  </ul>
+
+</section>
+<script>
+function rotate() {
+  document.querySelector('#menudemo').classList.toggle('rotate'); 
+}
+function resize() {   
+  document.querySelector('#menudemo').classList.toggle('resize'); 
+}
+</script>
+</body>
+</html>
+

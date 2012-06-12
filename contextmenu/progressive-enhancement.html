@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Full-on progressive enhancement</title>
+  <meta name="description" content="How to use detect support, hint availability and make context menus dynamic.">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="stylesheet" href="../style/styles.css" type="text/css">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .contextmenu #menudemo {
+    cursor: context-menu;
+  }
+  
+  #menudemo { 
+    width: 200px;
+    -webkit-transition: 0.2s; 
+       -moz-transition: 0.2s; 
+        -ms-transition: 0.2s; 
+         -o-transition: 0.2s; 
+            transition: 0.2s; 
+  }
+  #menudemo.rotate { 
+    -webkit-transform: rotate(90deg); 
+       -moz-transform: rotate(90deg); 
+        -ms-transform: rotate(90deg); 
+         -o-transform: rotate(90deg); 
+            transform: rotate(90deg); 
+  }
+  #menudemo.resize { 
+    -webkit-transform: scale(0.7); 
+       -moz-transform: scale(0.7); 
+        -ms-transform: scale(0.7); 
+         -o-transform: scale(0.7); 
+            transform: scale(0.7); 
+  }
+  #menudemo.resize.rotate { 
+    -webkit-transform: scale(0.7) rotate(90deg); 
+       -moz-transform: scale(0.7) rotate(90deg); 
+        -ms-transform: scale(0.7) rotate(90deg); 
+         -o-transform: scale(0.7) rotate(90deg); 
+            transform: scale(0.7) rotate(90deg); 
+  }
+</style>
+</head>
+<body>
+<section>
+  <header><h1>Progressive Enhancement</h1></header>
+  
+  <img src="html5.png" alt="HTML5" id="menudemo">
+
+  <ul id="imagemenu">
+    <li>
+      <button onclick="rotate()"><img src="rotate.png" alt=""> rotate</button>
+    </li>
+    <li>
+      <button onclick="resize()"><img src="resize.png" alt=""> resize</button>
+    </li>
+  </ul>
+
+</section>
+<script>
+if ('contextMenu' in document.body && 'HTMLMenuItemElement' in window) {
+
+  document.documentElement.classList.add('contextmenu');
+  
+  var img = document.querySelector('#menudemo'),
+      menu = document.querySelector('#imagemenu'),
+      items = document.querySelectorAll('#imagemenu button'),
+      i = items.length,
+      out = '', text = '';
+
+  var contextmenu = document.createElement('menu');
+  contextmenu.id = menu.id;
+  contextmenu.type = 'context';
+  img.setAttribute('contextmenu',menu.id);
+
+  while (i--) {
+    text = items[i].innerHTML.replace(/<img.*>\s+/,'');
+    text = text.trim();
+    out += '<menuitem label="' + text + 
+           '" onclick="' + items[i].getAttribute('onclick') +
+           '" icon="' + items[i].querySelector('img').src + '">'+
+           '</menuitem>';
+  }
+  contextmenu.innerHTML = out;
+  menu.parentNode.removeChild(menu);
+  document.body.appendChild(contextmenu);
+} 
+
+function rotate() {
+  document.querySelector('#menudemo').classList.toggle('rotate'); 
+}
+function resize() {   
+  document.querySelector('#menudemo').classList.toggle('resize'); 
+}
+
+</script>
+</body>
+</html>
