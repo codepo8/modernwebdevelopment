@@ -1,4 +1,4 @@
-# Modern Web Development
+Modern Web Development
 
 This is a presentation on "modern web development", specifically the 
 differences between progressive enhancement and graceful degradation but 
@@ -19,7 +19,7 @@ In the presentation you'll find "demo time" slides followed by "Memo time"
 slides repeating what we just learned. These mean you should show demo code
 in between, which is available here:
 
-## HTML5 magic built-in Demo time:
+HTML5 magic built-in Demo time:
 
 magic.html - show that this file displays as a heading in the browser. Then 
              open the browser developer tools and show that the browser 
@@ -47,9 +47,7 @@ form.html - this is a simple form example showing that by adding a required
             also explain that the labels in the form are very much needed 
             for accessibility.
 
-            HTML5 magic built-in Demo time:
-
-## Progressive Enhancement vs. Graceful Degradation Demo time:
+Progressive Enhancement vs. Graceful Degradation Demo time:
 
 gradients.html - an example of progressive enhancement. Instead of just using 
                  the -webkit- or -moz- prefixes for the gradient background 
@@ -125,7 +123,7 @@ contextmenu/ - A lesser known feature of HTML5 is menus and toolbars which
                maintaining. This is why products using graceful degradation 
                are much more likely to get out of sync.
 
-## Responsive design demos demo time:
+Responsive design demos demo time:
 
 responsive.html - Open the file in a few browsers and resize the browser 
                   window. You'll see that the background colour changes from 
